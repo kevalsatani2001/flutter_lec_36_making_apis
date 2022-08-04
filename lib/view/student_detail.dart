@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_lec_36_making_apis/models/student_model.dart';
+import 'package:flutter_lec_36_making_apis/view/student_editing.dart';
 import 'package:http/http.dart' as http;
 
 import '../utils/app_config.dart';
@@ -34,8 +35,12 @@ class _StudentDetailState extends State<StudentDetail> {
               : Text("${widget.student.firstName} ${widget.student.lastName}"),
           actions: [
             Row(
-              children: const [
-                Icon(Icons.edit),
+              children:  [
+                InkWell(
+                     onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>EditDetail(studentedit: widget.student,)));
+                     },
+                     child: Icon(Icons.edit)),
                 SizedBox(width: 20),
                 Icon(Icons.delete),
                 SizedBox(width: 20),
